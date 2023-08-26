@@ -1,0 +1,10 @@
+body{
+    width: min(95%,80rem);
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #6a6666;
+}
+
+h1{
+    color: #FFF;
+}
