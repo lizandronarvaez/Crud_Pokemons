@@ -1,4 +1,4 @@
-import { HttpAdapter } from '../common/interfaces/http-adapter.interface';
+import { HttpAdapter } from '../interfaces/http-adapter.interface';
 import axios, { AxiosInstance } from 'axios';
 import { Injectable } from '@nestjs/common';
 
