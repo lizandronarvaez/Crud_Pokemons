@@ -11,12 +11,13 @@ import { Pokemon } from './entities/pokemon.entity';
 import { Model, isValidObjectId } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PokemonService {
   constructor(
     @InjectModel(Pokemon.name)
-    private pokemonModel: Model<Pokemon>,
+    private pokemonModel: Model<Pokemon>, // private readonly configService: ConfigService,
   ) {}
   async create(createPokemonDto: CreatePokemonDto) {
     createPokemonDto.name = createPokemonDto.name.toLowerCase().trim();
