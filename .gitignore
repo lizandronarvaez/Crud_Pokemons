@@ -3,6 +3,7 @@
 /node_modules
 /mongoDB
 .env
+.env.prod
 # Logs
 logs
 *.log
