@@ -1,0 +1,7 @@
+# modulos de node
+/node_modules
+# carpeta de dist
+/dist
+# base de datos
+.gitignore
+/.git
