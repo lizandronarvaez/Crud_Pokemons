@@ -18,9 +18,11 @@
 5. Levantar la base de datos
 
    **-d significa modo 2º plano**
+
    ```
    docker compose up -d
    ```
+
 6. Configuracion variables de entorno
 
    **Clonar el archivo env.template y renombrarlo a .env**
@@ -36,6 +38,22 @@
    ```
    http://localhost:3000/api/v2/seed
    ```
+
+# Build Produccion
+
+1.  Crear el archivo `.env.prod`
+2.  Ingresar los datos de las variables de entorno
+3.  Crear la imagen
+
+    **El comando se definiria de la siguiente forma:**
+
+    #
+
+    **Comando docker-compose va a utilizar el archivo -f (filSystem) docker-compose.prod.yml y vas a utilizar las variables de entorno que estan en el archivo .env.prod y con up se levantará los contenedores y con --build construira la imagen**
+
+    ```
+    docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+    ```
 
 # Stack Usado
 

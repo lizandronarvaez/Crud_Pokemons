@@ -1,0 +1,32 @@
+# Usa la imagen de node es como un ordenador virtual instalando node con esta version
+FROM node:18-alpine3.15
+
+# Ejecuta el comando mkdir y crea el directio
+RUN mkdir -p /var/www/pokedex
+# Especifica el directorio que vamos a utilizar
+WORKDIR /var/www/pokedex
+
+# Copia todo lo que esta en el mismo directorio del dockerfile a la carpeta que aparece alado
+COPY . ./var/www/pokedex
+# Copia los archivos que hemos especificado en la ruta que hemos puesto
+COPY package.json tsconfig.json tsconfig.build.json /var/www/pokedex/
+# Ejecuta e instala solo las depencias de produccion
+RUN yarn install --prod
+# Ejecuta el comando build del package.json para hacer el build de produccion
+RUN yarn build
+
+# Ejecuta el comando agregando un nuevo usuario y desabilita el password
+# Agregar usuario - deshabilitar usuario - nombre usuario
+RUN adduser --disabled-password pokeuser
+# Este comando da acceso al usuario solo ala carpeta especificada
+RUN sudo chown -R pokeuser:pokeuser /var/www/pokedex
+# Este comando usa el usuario creado
+USER pokeuser
+
+# Limpiar la caché 
+RUN yarn cache clean --force
+
+# Establece el puerto
+EXPOSE 3000
+# comando que va a ejecutar el proyecto en la carpeta dist
+CMD [ "yarn","start" ]
